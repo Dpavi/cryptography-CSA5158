@@ -1,0 +1,12 @@
+key = "QWERTYUIOPASDFGHJKLZXCVBNM"
+
+text = input("Enter text: ").upper()
+result = ""
+
+for ch in text:
+    if ch.isalpha():
+        result += key[ord(ch) - 65]
+    else:
+        result += ch
+
+print("Cipher text:", result)
