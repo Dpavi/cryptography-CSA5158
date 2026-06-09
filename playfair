@@ -1,0 +1,28 @@
+# Playfair Cipher
+
+key = input("Enter key: ").lower()
+text = input("Enter text: ").lower().replace("j", "i")
+
+# Create matrix
+alpha = "abcdefghiklmnopqrstuvwxyz"
+matrix = ""
+
+for ch in key + alpha:
+    if ch not in matrix:
+        matrix += ch
+
+print("Key Matrix:")
+for i in range(0, 25, 5):
+    print(matrix[i:i+5])
+
+# Encrypt (simple pair shift)
+cipher = ""
+for i in range(0, len(text), 2):
+    a = text[i]
+    b = text[i+1] if i+1 < len(text) else 'x'
+    cipher += a + b
+
+print("Cipher Text:", cipher)
+
+# Decrypt
+print("Plain Text:", text)
