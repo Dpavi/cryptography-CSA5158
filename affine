@@ -1,0 +1,26 @@
+import math
+
+text = input("Enter text: ").upper()
+a = int(input("Enter key a: "))
+b = int(input("Enter key b: "))
+
+if math.gcd(a, 26) != 1:
+    print("Invalid key")
+else:
+    cipher = ""
+    for ch in text:
+        x = ord(ch) - 65
+        cipher += chr((a * x + b) % 26 + 65)
+
+    print("Ciphertext:", cipher)
+
+    for i in range(26):
+        if (a * i) % 26 == 1:
+            inv = i
+
+    plain = ""
+    for ch in cipher:
+        y = ord(ch) - 65
+        plain += chr((inv * (y - b)) % 26 + 65)
+
+    print("Decrypted:", plain)
