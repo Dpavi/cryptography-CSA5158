@@ -1,0 +1,26 @@
+def vigenere_encrypt(text, key):
+    result = ""
+    key = key.upper()
+    for i in range(len(text)):
+        t = ord(text[i].upper()) - 65
+        k = ord(key[i % len(key)]) - 65
+        result += chr((t + k) % 26 + 65)
+    return result
+
+def vigenere_decrypt(text, key):
+    result = ""
+    key = key.upper()
+    for i in range(len(text)):
+        t = ord(text[i]) - 65
+        k = ord(key[i % len(key)]) - 65
+        result += chr((t - k) % 26 + 65)
+    return result
+
+text = input("Enter plaintext: ")
+key = input("Enter key: ")
+
+cipher = vigenere_encrypt(text, key)
+plain = vigenere_decrypt(cipher, key)
+
+print("Ciphertext:", cipher)
+print("Decrypted:", plain)
