@@ -1,0 +1,16 @@
+# Simple Substitution Cipher Decryption
+
+alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+key   = "QWERTYUIOPASDFGHJKLZXCVBNM"
+
+cipher = input("Enter ciphertext: ").upper()
+
+plain = ""
+
+for ch in cipher:
+    if ch in key:
+        plain += alpha[key.index(ch)]
+    else:
+        plain += ch
+
+print("Plaintext:", plain)
